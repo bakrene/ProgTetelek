@@ -1,0 +1,101 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace progi15
+{
+    class Program
+    {
+        struct Ember
+        {
+            public string Nev;
+            public string Varos;
+            public int Eletkor;
+        }
+
+        static void Main(string[] args)
+        {
+
+            List<int> Szamok = new List<int> { 3, 4, 5, 6, 7, 8, 3 };
+
+            Ember[] Lakosok = new Ember[100];
+
+            Random r = new Random();
+
+            int szam1 = r.Next(0, 11);
+            int szam2 = r.Next(0, 11);
+
+            Console.WriteLine("Szam1={0}   Szam2={1}", szam1, szam2);
+
+            int SorokSzama = 0;
+            
+            string eleresiut = @"D:\emberek.txt";
+
+            // metódushívások ide:
+
+            Console.WriteLine("1. feladat");
+
+            Console.WriteLine("A lista legnagyobb száma: "+ elso(Szamok));
+
+            Console.WriteLine("2. feladat");
+            Console.WriteLine("Adjon meg egy True (páros) vagy False (páratlan) értéket: ");
+            bool be = bool.Parse(Console.ReadLine());
+            Console.WriteLine(masodik(be, Szamok));
+
+            Console.ReadKey();
+        }
+
+
+        static string elso(List<int> Szamok)
+        {
+            string ki = "";
+            int legnagyobb = 0;
+            foreach (var item in Szamok)
+            {
+                if(item > legnagyobb)
+                {
+                    legnagyobb = item;
+                }
+            }
+            ki = Convert.ToString(legnagyobb);
+            return ki;
+        }
+
+
+        
+
+        static string masodik(bool be, List<int> Szamok)
+        {
+            string ki = "";
+            if (be)
+            {
+                foreach (var item in Szamok)
+                {
+                    if (item % 2 == 0)
+                    {
+                        ki += item+" ";
+                    }
+                }
+            }
+            else
+            {
+                foreach (var item in Szamok)
+                {
+                    if (item % 2 == 1)
+                    {
+                        ki+= item+" ";
+                    }
+                }
+            }
+            return ki; 
+        }
+
+
+       
+       
+        
+    }
+}
